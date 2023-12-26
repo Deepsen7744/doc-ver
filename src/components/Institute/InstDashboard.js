@@ -4,6 +4,7 @@ import { TbWorldSearch } from 'react-icons/tb'
 import { MdOutlinePrivacyTip } from 'react-icons/md'
 import { TiFolderOpen } from 'react-icons/ti'
 import { AppContext } from '../../context/AppContext'
+import InstituteProfile from './InstituteProfile'
 
 import user from '../../assets/Images/user.png'
 
@@ -35,8 +36,7 @@ import { useNavigate } from 'react-router-dom'
 const InstDashboard = () => {
   const { result } = useContext(AppContext)
   console.log(result)
-  const navigate = useNavigate();
-
+  const navigate = useNavigate()
 
   const [open, setOpen] = useState(false)
   let menuRef = useRef()
@@ -50,7 +50,7 @@ const InstDashboard = () => {
     document.addEventListener('mousedown', handler)
     return () => {
       document.removeEventListener('mousedown', handler)
-      navigate('/dashboard/institute/institute-profile');
+      navigate('/dashboard/institute/institute-profile')
     }
   })
 
@@ -61,9 +61,7 @@ const InstDashboard = () => {
         <div className="   pt-16   flex flex-col">
           <SidebarInstitute />
           <div className="      pl-80 pt-7">
-            <div>
-              oekfpksappslapcflspdcpkskdlcldsllclcdsjfkdskjvdmvlmdlmvkfdomvmdfkvdf{' '}
-            </div>
+            <InstituteProfile />
           </div>
         </div>
 
@@ -83,7 +81,6 @@ const InstDashboard = () => {
           <div
             className={`dropdown-menu ${open ? 'active  bord' : 'inactive'}`}
           >
-            
             <ul>
               <DropdownItem img={user} text={'Dashboard'} />
 

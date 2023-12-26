@@ -9,6 +9,9 @@ import { BiLockAlt } from 'react-icons/bi'
 import { PiSignInBold } from 'react-icons/pi'
 import '../Goverment/Slidebar.css'
 import Warning from '../Home/Warning'
+import { PiStudentFill } from 'react-icons/pi'
+import { IoDocumentText } from 'react-icons/io5'
+import { PiCertificateFill } from 'react-icons/pi'
 
 import { Link } from 'react-router-dom'
 import { AppContext } from '../../context/AppContext'
@@ -17,15 +20,16 @@ import { warning } from 'framer-motion'
 const ethers = require('ethers')
 
 const SidebarStudent = () => {
-  const { account, 
-    setAccount, 
-    warning, 
-    setWarning, 
-    result, 
-    contractAddress, 
-    setContract, 
-    setProvider } =
-    useContext(AppContext)
+  const {
+    account,
+    setAccount,
+    warning,
+    setWarning,
+    result,
+    contractAddress,
+    setContract,
+    setProvider,
+  } = useContext(AppContext)
 
   useEffect(() => {
     const provider = new ethers.providers.Web3Provider(window.ethereum)
@@ -43,15 +47,14 @@ const SidebarStudent = () => {
         const signer = provider.getSigner()
         const address = await signer.getAddress()
         setAccount(address)
-        if(address === result.ac)
-        {
-          setWarning(false);
+        if (address === result.ac) {
+          setWarning(false)
         } else {
-          setWarning(true);
+          setWarning(true)
         }
-        console.log(address);
+        console.log(address)
         console.log(result.ac)
-        console.log(warning);
+        console.log(warning)
         const contract = new ethers.Contract(contractAddress, abi, signer)
         setContract(contract)
         setProvider(provider)
@@ -64,35 +67,45 @@ const SidebarStudent = () => {
 
   return (
     <div className="body">
-     {warning && <Warning />}
+      {warning}
       <div className="container">
         <div className="navigation">
           <ul>
-            <li>
-              {/* just a blank list item */}
+            <li className=" flex justify-center items-center mt-3">
+              {/* <div href="#" className=" flex  flex-col">
+                <span className="icon    w-16  ">
+                  <img className=" text-gray-300" src={icon}></img>
+                </span>
+              </div> */}
             </li>
             <li>
               <Link to={'/dashboard/student/student-profile'}>
-                <span className="icon">
-                  <AiOutlineHome className="iccon" />
+                <span className="icon ">
+                  <PiStudentFill className="iccon" />
                 </span>
-                <span class="title">Student profile</span>
+                <span className="title     font-pop   font-semibold">
+                  Student profile
+                </span>
               </Link>
             </li>
             <li>
               <Link to={'/dashboard/student/student-application'}>
                 <span className="icon">
-                  <FiUsers className="iccon" />
+                  <IoDocumentText className="iccon" />
                 </span>
-                <span class="title">Application</span>
+                <span className="title  font-pop   font-semibold">
+                  Application
+                </span>
               </Link>
             </li>
             <li>
               <Link to={'/dashboard/student/my-certificates'}>
                 <span className="icon">
-                  <BsChat className="iccon" />
+                  <PiCertificateFill className="iccon" />
                 </span>
-                <span class="title">My Certificates</span>
+                <span className="title  font-pop   font-semibold">
+                  My Certificates
+                </span>
               </Link>
             </li>
           </ul>

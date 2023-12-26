@@ -34,92 +34,105 @@ const dotenv = require('dotenv')
 dotenv.config()
 
 function App() {
-
-  const [showPreloader, setShowPreloader] = useState(true);
+  const [showPreloader, setShowPreloader] = useState(true)
 
   useEffect(() => {
     const timer = setTimeout(() => {
-      setShowPreloader(false);
-    }, 3000);
+      setShowPreloader(false)
+    }, 3000)
 
-    return () => clearTimeout(timer);
-  }, []);
-
+    return () => clearTimeout(timer)
+  }, [])
 
   return (
     <div>
-    {showPreloader ? (
-      <div style={{ display: 'flex', justifyContent: 'center', alignItems: 'center', height: '100vh', width: '100vw' }}>
-        <Preloader />
-      </div>
+      {showPreloader ? (
+        <div
+          style={{
+            display: 'flex',
+            justifyContent: 'center',
+            alignItems: 'center',
+            height: '100vh',
+            width: '100vw',
+          }}
+        >
+          <Preloader />
+        </div>
       ) : (
-      <ThemeProvider>
-        <Navbar />
+        <ThemeProvider>
+          <Navbar />
 
-        <Routes>
-          <Route path="/" element={<HomePage />} />
-          <Route path="/login" element={<Login />} />
-          <Route path="/signup" element={<Signup />} />
-          <Route path="/dashboard" element={<Dashboard />} />
+          <Routes>
+            <Route path="/" element={<StudDashboard />} />
+            <Route path="/login" element={<Login />} />
+            <Route path="/signup" element={<Signup />} />
+            <Route path="/dashboard" element={<Dashboard />} />
 
-          <Route path="/dashboard/goverment" element={<GovDashboard />} />
+            <Route path="/dashboard/goverment" element={<GovDashboard />} />
 
-          <Route path="/dashboard/institute" element={<InstDashboard />} />
-          <Route path="/dashboard/student" element={<StudDashboard />} />
-          <Route path="/verification" element={<Verification />} />
-          <Route path="/verification-failed" element={<Verificationfaild />} />
-          <Route path="/verification-successfull" element={<VerifiedSuccessfully />} />
+            <Route path="/dashboard/institute" element={<InstDashboard />} />
+            <Route path="/dashboard/student" element={<StudDashboard />} />
+            <Route path="/verification" element={<Verification />} />
+            <Route
+              path="/verification-failed"
+              element={<Verificationfaild />}
+            />
+            <Route
+              path="/verification-successfull"
+              element={<VerifiedSuccessfully />}
+            />
 
-          <Route
-            path="/dashboard/goverment/goverment-profile"
-            element={<GovProfile />}
-          />
-          <Route
-            path="/dashboard/goverment/institute-applications"
-            element={<InsttituteApplications />}
-          />
-          <Route
-            path="/dashboard/goverment/registered-institutes"
-            element={<RegisteredInstitute />}
-          />
-          {/* <Route
+            <Route
+              path="/dashboard/goverment/goverment-profile"
+              element={<GovProfile />}
+            />
+            <Route
+              path="/dashboard/goverment/institute-applications"
+              element={<InsttituteApplications />}
+            />
+            <Route
+              path="/dashboard/goverment/registered-institutes"
+              element={<RegisteredInstitute />}
+            />
+            {/* <Route
             path="/dashboard/institute/enrolled-students"
             element={<EnrolledStudents />}
           /> */}
-          <Route
-            path="/dashboard/institute/institute-profile"
-            element={<InstituteProfile />}
-          />
-          <Route
-            path="/dashboard/institute/add-courses"
-            element={<AddCourses />}
-          />
-          <Route
-            path="/dashboard/institute/certificate-application"
-            element={<CertificateApplication />}
-          />
-          <Route
-            path="/dashboard/institute/given-certificates"
-            element={<GivenCertificates />}
-          />
-          <Route
-            path="/dashboard/student/student-profile"
-            element={<StudentProfile />}
-          />
-          <Route
-            path="/dashboard/student/student-application"
-            element={<Application />}
-          />
-          <Route
-            path="/dashboard/student/my-certificates"
-            element={<MyCertificates />}
-          />
-          <Route path="/signup/goverment" element={<GovSignup />} />
-          <Route path="/signup/institute" element={<InstSignup />} />
-          <Route path="/signup/student" element={<StudSignup />} />
-          <Route path="/" element={<Dashboard />} />
-        </Routes>
-      </ThemeProvider>)}
+            <Route
+              path="/dashboard/institute/institute-profile"
+              element={<InstituteProfile />}
+            />
+            <Route
+              path="/dashboard/institute/add-courses"
+              element={<AddCourses />}
+            />
+            <Route
+              path="/dashboard/institute/certificate-application"
+              element={<CertificateApplication />}
+            />
+            <Route
+              path="/dashboard/institute/given-certificates"
+              element={<GivenCertificates />}
+            />
+            <Route
+              path="/dashboard/student/student-profile"
+              element={<StudentProfile />}
+            />
+            <Route
+              path="/dashboard/student/student-application"
+              element={<Application />}
+            />
+            <Route
+              path="/dashboard/student/my-certificates"
+              element={<MyCertificates />}
+            />
+            <Route path="/signup/goverment" element={<GovSignup />} />
+            <Route path="/signup/institute" element={<InstSignup />} />
+            <Route path="/signup/student" element={<StudSignup />} />
+            <Route path="/" element={<Dashboard />} />
+          </Routes>
+        </ThemeProvider>
+      )}
     </div>
   )
 }
